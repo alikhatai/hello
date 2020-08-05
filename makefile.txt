@@ -1,0 +1,14 @@
+paths = -I/usr/local/include -L/usr/local/lib
+tags = -lntl -lm -lpthread -lgmp -O3
+objects = hello.o
+
+all: run_hello
+
+%.o: %.cpp
+        g++ $(paths) -c $<
+
+run_hello: $(objects)
+        g++ $(paths) $(objects) -o run_hello $(tags)
+
+clean:
+        rm $(objects) run_hello
